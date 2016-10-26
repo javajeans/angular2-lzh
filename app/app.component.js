@@ -19,7 +19,11 @@ var AppComponent = (function () {
             id: 1,
             name: 'windstorm'
         };
+        this.heroes = HEROES;
     }
+    AppComponent.prototype.onSelect = function (hero) {
+        this.selectedHero = hero;
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
@@ -28,7 +32,21 @@ var AppComponent = (function () {
                 '<h2>{{hero.name}} details!</h2>' +
                 '<div><label>id: </label>{{hero.id}}</div>' +
                 '<div><label>name: </label>{{hero.name}}</div>' +
-                '<input [(ngModel)] = "hero.name" value="{{hero.name}}" placeholder="name" >'
+                '<input [(ngModel)] = "hero.name" value="{{hero.name}}" placeholder="name" >' +
+                '<h2>My Heroes</h2>' +
+                '<ul class="heroes">' +
+                '<li *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero === selectedHero">' +
+                '<span class = "badge">{{hero.id}}</span> {{hero.name}}' +
+                '</li>' +
+                '</ul>' +
+                '<div *ngIf="selectedHero">' +
+                '<h2>{{selectedHero.name}} details!</h2>' +
+                '<div><label>id: </label>{{selectedHero.id}}</div>' +
+                '<div>' +
+                '<label>name: </label>' +
+                '<input [(ngModel)]="selectedHero.name" placeholder="name"/>' +
+                '</div>' +
+                '</div>'
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
@@ -41,4 +59,16 @@ var Hero = (function () {
     return Hero;
 }());
 exports.Hero = Hero;
+var HEROES = [
+    { id: 11, name: 'Mr. Nice' },
+    { id: 12, name: 'Narco' },
+    { id: 13, name: 'Bombasto' },
+    { id: 14, name: 'Celeritas' },
+    { id: 15, name: 'Magneta' },
+    { id: 16, name: 'RubberMan' },
+    { id: 17, name: 'Dynama' },
+    { id: 18, name: 'Dr IQ' },
+    { id: 19, name: 'Magma' },
+    { id: 20, name: 'Tornado' }
+];
 //# sourceMappingURL=app.component.js.map
