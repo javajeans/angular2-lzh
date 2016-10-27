@@ -1,41 +1,16 @@
-import {Component, OnInit} from '@angular/core';
-import {Hero} from './hero';
-import {HEROES} from "./mock-heros";
-import {HeroService} from "./hero.service";
-
+import {Component} from '@angular/core';
 @Component({
     selector: 'my-app',
-    providers: [HeroService],
     template: `
     <h1>{{title}}</h1>
-    <h2>My Heroes</h2>
-    <ul class="heroes">
-      <li *ngFor="let hero of heroes"
-        [class.selected]="hero === selectedHero"
-        (click)="onSelect(hero)">
-        <span class="badge">{{hero.id}}</span> {{hero.name}}
-      </li>
-    </ul>
-    
-    <my-hero-detail [hero]="selectedHero"></my-hero-detail>
+    <nav>
+    <a routerLink = "/heroes">Heroes</a>
+    <a routerLink="/dashboard">Dashboard</a>
+</nav>
+    <router-outlet></router-outlet><!--路由器需要把激活的组件显示在 <router-outlet> 里面-->
+    <!--<my-heroes></my-heroes>-->
   `
 
 })
-export class AppComponent implements OnInit {
-heroes:Hero[];
-    title = 'Tour of Heroes';
-    selectedHero: Hero;
-    constructor(private heroService: HeroService) {
-    }
-    ngOnInit(): void {
-        this.getHeroes();
-    }
-    getHeroes(): void {
-        this.heroService.getHeroes().then(heroes => this.heroes = heroes);
-    }
-    //heroes = HEROES;
-    //heroes = this.heroService.getHeroes();
-    onSelect(hero: Hero): void {
-        this.selectedHero = hero;
-    }
+export class AppComponent {
 }

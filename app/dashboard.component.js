@@ -8,18 +8,21 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
+/**
+ * Created by zhiheng.li on 2016/10/27.
+ */
+var core_1 = require("@angular/core");
+var DashboardComponent = (function () {
+    function DashboardComponent() {
     }
-    AppComponent = __decorate([
+    DashboardComponent = __decorate([
         core_1.Component({
-            selector: 'my-app',
-            template: "\n    <h1>{{title}}</h1>\n    <nav>\n    <a routerLink = \"/heroes\">Heroes</a>\n    <a routerLink=\"/dashboard\">Dashboard</a>\n</nav>\n    <router-outlet></router-outlet><!--\u8DEF\u7531\u5668\u9700\u8981\u628A\u6FC0\u6D3B\u7684\u7EC4\u4EF6\u663E\u793A\u5728 <router-outlet> \u91CC\u9762-->\n    <!--<my-heroes></my-heroes>-->\n  "
+            selector: 'my-dashboard',
+            template: '<h3>My Dashboard</h3>'
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], DashboardComponent);
+    return DashboardComponent;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.DashboardComponent = DashboardComponent;
+//# sourceMappingURL=dashboard.component.js.map
