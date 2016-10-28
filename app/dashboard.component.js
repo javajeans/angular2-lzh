@@ -12,17 +12,38 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Created by zhiheng.li on 2016/10/27.
  */
 var core_1 = require("@angular/core");
+var hero_service_1 = require("./hero.service");
+var router_1 = require("@angular/router");
 var DashboardComponent = (function () {
-    function DashboardComponent() {
+    function DashboardComponent(heroService, router) {
+        this.heroService = heroService;
+        this.router = router;
+        this.heroes = [];
     }
+    DashboardComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.heroService.getHeroes()
+            .then(function (heroes) { return _this.heroes = heroes.slice(1, 5); });
+    };
+    DashboardComponent.prototype.gotoDetail = function (hero) {
+        var link = ['/detail', hero.id];
+        this.router.navigate(link);
+    };
     DashboardComponent = __decorate([
         core_1.Component({
+            moduleId: module.id,
             selector: 'my-dashboard',
-            template: '<h3>My Dashboard</h3>'
+            templateUrl: 'dashboard.component.html',
+            styleUrls: ['dashboard.component.css']
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [hero_service_1.HeroService, router_1.Router])
     ], DashboardComponent);
     return DashboardComponent;
 }());
 exports.DashboardComponent = DashboardComponent;
+/**
+ * 1.创建一个heroes数组属性
+ * 2.把HeroService注入构造函数中，并且把它保存在一个私有的heroService字段中
+ * 3.在Angular的ngOninit生命周期钩子里面调用服务来获得英雄列表K
+ **/ 
 //# sourceMappingURL=dashboard.component.js.map

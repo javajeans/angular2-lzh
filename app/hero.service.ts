@@ -10,4 +10,7 @@ export class HeroService{
    getHeroes():Promise<Hero[]>{//我们通过返回一个 立即解决的承诺 的方式，模拟了一个超快、零延迟的超级服务器
       return Promise.resolve(HEROES);
    }
+   getHero(id:number):Promise<Hero>{
+      return this.getHeroes().then(heroes => heroes.find(hero =>hero.id ===id));
+   }
 }

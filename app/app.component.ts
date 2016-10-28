@@ -1,15 +1,16 @@
 import {Component} from '@angular/core';
 @Component({
+    moduleId:module.id,
     selector: 'my-app',
     template: `
-    <h1>{{title}}</h1>
-    <nav>
-    <a routerLink = "/heroes">Heroes</a>
-    <a routerLink="/dashboard">Dashboard</a>
-</nav>
-    <router-outlet></router-outlet><!--路由器需要把激活的组件显示在 <router-outlet> 里面-->
-    <!--<my-heroes></my-heroes>-->
-  `
+  <h1>{{title}}</h1>
+  <nav>
+    <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+    <a routerLink="/heroes" routerLinkActive="active">Heroes</a>
+  </nav>
+  <router-outlet></router-outlet>
+`, styleUrls: ['app.component.css']
+
 
 })
 export class AppComponent {

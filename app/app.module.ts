@@ -5,22 +5,18 @@ import {AppComponent}  from './app.component';
 import {HeroDetailComponent} from './hero-detail.component';
 import {HeroesComponent} from "./heroes.component";
 import {HeroService}         from './hero.service';
-import {RouterModule} from "@angular/router";
 import {DashboardComponent} from "./dashboard.component";
+import {AppRoutingModule} from "./app-routing.module";
+import {HttpModule} from "@angular/http";
+import {InMemoryWebApiModule} from "angular-in-memory-web-api";
+import {InMemoryDataService} from "./in-memory-data.service";
 @NgModule({
     imports: [//导入模板（例如使用表单需要导入FormsModule
         BrowserModule,
         FormsModule,
-        RouterModule.forRoot([//forRoot 方法提供了路由需要的路由服务提供商和指令，并基于当前浏览器 URL 初始化导航
-            {
-               path:'heroes',
-                component:HeroesComponent
-            },{
-                path:'dashboard',
-                component:DashboardComponent,
-                pathMatch:'full'
-            }
-        ])
+        AppRoutingModule,
+        HttpModule,
+        InMemoryWebApiModule.forRoot(InMemoryDataService)//InMemoryWebApiModule 将 Http 客户端默认的后端服务（这是一个辅助服务，负责与远程服务器对话）替换成了 内存 Web API 服务
     ],
     declarations: [//入口加载组件（Component）
         AppComponent,
@@ -33,6 +29,7 @@ import {DashboardComponent} from "./dashboard.component";
         HeroService
     ]
 })
+
 
 export class AppModule {
 }
