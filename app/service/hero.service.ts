@@ -2,8 +2,8 @@
  * Created by zhiheng.li on 2016/10/27.
  */
 import {Injectable} from "@angular/core";
-import {Hero} from "./hero";
-import {HEROES} from "./mock-heros";
+import {Hero} from "../domain/hero";
+import {HEROES} from "../domain/mock-heros";
 import 'rxjs/add/operator/toPromise';
 import {Http, Headers} from "@angular/http";
 @Injectable()

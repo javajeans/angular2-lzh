@@ -12,7 +12,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Created by zhiheng.li on 2016/10/27.
  */
 var core_1 = require("@angular/core");
-var hero_service_1 = require("./hero.service");
+var hero_service_1 = require("../../service/hero.service");
 var router_1 = require("@angular/router");
 var DashboardComponent = (function () {
     function DashboardComponent(heroService, router) {
