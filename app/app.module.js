@@ -22,6 +22,7 @@ var angular_in_memory_web_api_1 = require("angular-in-memory-web-api");
 var in_memory_data_service_1 = require("./service/in-memory-data.service");
 require('./rxjs-extensions');
 var hero_search_component_1 = require("./component/hero-search/hero-search.component");
+var hero_form_component_1 = require("./component/hero-form/hero-form.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -39,7 +40,8 @@ var AppModule = (function () {
                 hero_detail_component_1.HeroDetailComponent,
                 heroes_component_1.HeroesComponent,
                 dashboard_component_1.DashboardComponent,
-                hero_search_component_1.HeroSearchComponent
+                hero_search_component_1.HeroSearchComponent,
+                hero_form_component_1.HeroFormComponent
             ],
             bootstrap: [app_component_1.AppComponent],
             providers: [
