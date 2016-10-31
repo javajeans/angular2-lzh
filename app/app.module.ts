@@ -10,6 +10,8 @@ import {AppRoutingModule} from "./app-routing.module";
 import {HttpModule} from "@angular/http";
 import {InMemoryWebApiModule} from "angular-in-memory-web-api";
 import {InMemoryDataService} from "./in-memory-data.service";
+import './rxjs-extensions';
+import {HeroSearchComponent} from "./hero-search.component";
 @NgModule({
     imports: [//导入模板（例如使用表单需要导入FormsModule
         BrowserModule,
@@ -22,7 +24,8 @@ import {InMemoryDataService} from "./in-memory-data.service";
         AppComponent,
         HeroDetailComponent,
         HeroesComponent,
-        DashboardComponent
+        DashboardComponent,
+        HeroSearchComponent
     ],
     bootstrap: [AppComponent],//bootstrap加载器入口为AppComponent
     providers: [//提供服务

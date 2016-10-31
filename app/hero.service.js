@@ -18,6 +18,7 @@ var HeroService = (function () {
     function HeroService(http) {
         this.http = http;
         this.heroesUrl = 'app/heroes';
+        this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
     }
     HeroService.prototype.handleError = function (error) {
         console.error('An error occurred', error); // for demo purposes only
@@ -32,6 +33,28 @@ var HeroService = (function () {
     };
     HeroService.prototype.getHero = function (id) {
         return this.getHeroes().then(function (heroes) { return heroes.find(function (hero) { return hero.id === id; }); });
+    };
+    HeroService.prototype.update = function (hero) {
+        var url = this.heroesUrl + "/" + hero.id; //这个相当于this.heroesUrl}+“/”+hero.id   为什么加入${}后续需要跟进
+        console.log(url);
+        return this.http.put(url, JSON.stringify(hero), { headers: this.headers })
+            .toPromise()
+            .then(function () { return hero; })
+            .catch(this.handleError);
+    };
+    HeroService.prototype.create = function (name) {
+        return this.http
+            .post(this.heroesUrl, JSON.stringify({ name: name }), { headers: this.headers })
+            .toPromise()
+            .then(function (res) { return res.json().data; })
+            .catch(this.handleError);
+    };
+    HeroService.prototype.delete = function (id) {
+        var url = this.heroesUrl + "/" + id;
+        return this.http.delete(url, { headers: this.headers })
+            .toPromise()
+            .then(function () { return null; })
+            .catch(this.handleError);
     };
     HeroService = __decorate([
         core_1.Injectable(), 
